@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LogInManager : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class LogInManager : MonoBehaviour
 
         // currentPlayerを毎フレーム監視し、ログインが完了したら
         if (FindObjectOfType<UserAuth>().currentPlayer() != null)
-            Application.LoadLevel("Stage");
+            SceneManager.LoadScene("StageCheck");
 
     }
 
