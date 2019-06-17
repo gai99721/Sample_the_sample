@@ -72,8 +72,8 @@ public class LogInManager : MonoBehaviour
 
         // currentPlayerを毎フレーム監視し、ログインが完了したら
         if (FindObjectOfType<UserAuth>().currentPlayer() != null)
-            Debug.Log("ログイン成功");
-            SceneManager.LoadScene("StageCheck");
+            //Debug.Log("ログイン成功");
+            SceneManager.LoadScene("Stage");
 
     }
 

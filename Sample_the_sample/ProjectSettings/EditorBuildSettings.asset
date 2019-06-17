@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LogIn.unity
     guid: e865bea6ecd312d43b95b71081adb7e9
   - enabled: 1
-    path: Assets/Scenes/StageCheck.unity
-    guid: a2cdaac817f0b0f498614499c7305e91
-  - enabled: 1
     path: Assets/Scenes/Stage.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/StopWatchGame.unity
+    guid: ef1daa7f7a81b724db0b60c94e78aa36
   m_configObjects: {}

@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameStart.cs" />
     <Compile Include="Assets\NCMB\NCMBManager.cs" />
     <Compile Include="Assets\NCMB\NCMBSettings.cs" />
     <Compile Include="Assets\NCMB\Script\CommonConstant.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Assets\NCMB\Script\Task\NCMBUserTaskMethods.cs" />
     <Compile Include="Assets\Scripts\LogInManager.cs" />
     <Compile Include="Assets\Scripts\UserAuth.cs" />
+    <Compile Include="Assets\StopWatchGameTimer.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/nwuser.DA/Documents/進級制作Ⅱ/サンプルゲーム化/Sample_the_sample2/Sample_the_sample/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
