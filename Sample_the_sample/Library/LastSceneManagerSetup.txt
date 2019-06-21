@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/LogIn.unity
+- path: Assets/Scenes/StopWatchGame.unity
   isLoaded: 1
   isActive: 1
