@@ -18,6 +18,9 @@ public class StopWatchGameTimer : MonoBehaviour
     bool Startflg = false;
     int i = 0;
 
+    private bool backButton;
+    private bool retryButton;
+
     // Update is called once per frame
     void Update()
     {
@@ -49,22 +52,7 @@ public class StopWatchGameTimer : MonoBehaviour
             Text1_text.text = "タップすると止まります";
 
         }
-        if(Stopflg == true)
-        {
-            Text1_text.text = "スペースでステージ選択へ";
-            Text2_text.text = "エンターでもう一度";
-            if(Input.GetKey(KeyCode.Space))
-            {
-                SceneManager.LoadScene("Stage");
-
-            }
-            if (Input .GetKey(KeyCode.Return))
-            {
-                SceneManager.LoadScene("StopWatchGame");
-
-            }
-
-        }
+        
     }
     void StartCheck()
     {
@@ -86,7 +74,7 @@ public class StopWatchGameTimer : MonoBehaviour
 
         if (Stopflg == false)
         {
-
+            
             timer += Time.deltaTime;//0.01000f;
             if (timer < Darkening)
             {
@@ -121,5 +109,34 @@ public class StopWatchGameTimer : MonoBehaviour
         {
             judg = timer;
         }
+    }
+    void OnGUI()
+    {
+        
+        if (Stopflg == true)
+        {
+            drawMenu();
+        }
+
+        // 戻るボタンが押されたら
+        if (backButton)
+        {
+            //FindObjectOfType<Manager>().GameOver();
+            SceneManager.LoadScene("Stage");
+        }
+
+        if (retryButton)
+        {
+            SceneManager.LoadScene("StopWatchGame");
+        }
+    }
+
+    private void drawMenu()
+    {
+        // ボタンの設置
+        int btnW = 170, btnH = 30;
+        GUI.skin.button.fontSize = 20;
+        backButton = GUI.Button(new Rect(Screen.width * 1 / 4 - btnW * 1 / 4, Screen.height * 7 / 8 - btnH * 1 / 2, btnW, btnH), "Back");
+        retryButton = GUI.Button(new Rect(Screen.width * 1 / 4 - btnW * 1 / 4 + 300, Screen.height * 7 / 8 - btnH * 1 / 2, btnW, btnH), "Retry");
     }
 }

@@ -104,6 +104,8 @@
     <Compile Include="Assets\NCMB\Script\Task\NCMBUserTaskExtension.cs" />
     <Compile Include="Assets\NCMB\Script\Task\NCMBUserTaskMethods.cs" />
     <Compile Include="Assets\Scripts\GameStart.cs" />
+    <Compile Include="Assets\Scripts\LeaderBoard.cs" />
+    <Compile Include="Assets\Scripts\LeaderBoardManager.cs" />
     <Compile Include="Assets\Scripts\LogInManager.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\StopWatchGameTimer.cs" />

@@ -7,7 +7,7 @@ public class Manager : MonoBehaviour
     //public GameObject player;
 
     // タイトル
-    private GameObject title;
+    public GameObject title;
 
     // ボタンが押されると対応する変数がtrueになる
     private bool leaderBoardButton;
