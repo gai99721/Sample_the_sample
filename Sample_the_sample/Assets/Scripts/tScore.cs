@@ -60,7 +60,8 @@ public class tScore : MonoBehaviour {
     // ポイントの追加
     public void AddPoint(float point)
     {
-        t_Score = t_Score + point;
+        t_Score = point;
+        Save();
     }
 
     // ハイスコアの保存

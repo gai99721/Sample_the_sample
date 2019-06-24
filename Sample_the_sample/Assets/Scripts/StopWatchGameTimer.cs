@@ -17,10 +17,13 @@ public class StopWatchGameTimer : MonoBehaviour
     bool Stopflg = false;
     bool Startflg = false;
     int i = 0;
+    int num_flg = 0;
     public float point;
 
     private bool backButton;
     private bool retryButton;
+
+    bool Gameflg = false;
 
     // Update is called once per frame
     void Update()
@@ -42,26 +45,39 @@ public class StopWatchGameTimer : MonoBehaviour
     {
         Text Text1_text = Text1_object.GetComponent<Text>();
         Text Text2_text = Text2_object.GetComponent<Text>();
-        if (Startflg == false)
+        if (Gameflg == true)
         {
-            Text1_text.text = "タップすると始まります";
-            Text2_text.text = "目標数"+num+" 暗転開始が"+ Darkening;
+            if (Startflg == false)
+            {
+                Text1_text.text = "タップすると始まります";
+                Text2_text.text = "目標数" + num + " 暗転開始が" + Darkening;
 
-        }
-        else
-        {
-            Text1_text.text = "タップすると止まります";
+            }
+            else
+            {
+                Text1_text.text = "タップすると止まります";
 
+            }
         }
-        
+
     }
     void StartCheck()
     {
         if (Input.GetMouseButtonUp(0))
         {
-            Startflg = true;
+            num_flg += 1;
         }
-
+        switch (num_flg)
+        {
+            case 1:
+                Gameflg = true;
+                break;
+            case 2:
+                Startflg = true;
+                break;
+            default:
+                break;
+        }
     }
     void StopCheck()
     {
@@ -75,7 +91,7 @@ public class StopWatchGameTimer : MonoBehaviour
 
         if (Stopflg == false)
         {
-            
+
             timer += Time.deltaTime;//0.01000f;
             if (timer < Darkening)
             {
@@ -91,6 +107,8 @@ public class StopWatchGameTimer : MonoBehaviour
             Judgment();//判定
             Timer_text.text = "" + timer;
             Judg_text.text = "" + judg;
+            point = judg;
+            FindObjectOfType<tScore>().AddPoint(point);
         }
 
     }
@@ -111,13 +129,10 @@ public class StopWatchGameTimer : MonoBehaviour
             judg = timer;
         }
 
-        point = judg;
-        FindObjectOfType<tScore>().AddPoint(point);
-
     }
     void OnGUI()
     {
-        
+
         if (Stopflg == true)
         {
             drawMenu();
@@ -126,7 +141,6 @@ public class StopWatchGameTimer : MonoBehaviour
         // 戻るボタンが押されたら
         if (backButton)
         {
-            //FindObjectOfType<Manager>().GameOver();
             SceneManager.LoadScene("Stage");
         }
 
