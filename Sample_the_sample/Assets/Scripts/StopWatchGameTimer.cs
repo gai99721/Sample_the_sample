@@ -17,6 +17,7 @@ public class StopWatchGameTimer : MonoBehaviour
     bool Stopflg = false;
     bool Startflg = false;
     int i = 0;
+    public float point;
 
     private bool backButton;
     private bool retryButton;
@@ -109,6 +110,10 @@ public class StopWatchGameTimer : MonoBehaviour
         {
             judg = timer;
         }
+
+        point = judg;
+        FindObjectOfType<tScore>().AddPoint(point);
+
     }
     void OnGUI()
     {

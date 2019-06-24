@@ -58,7 +58,7 @@ public class tScore : MonoBehaviour {
     }
 
     // ポイントの追加
-    public void AddPoint(int point)
+    public void AddPoint(float point)
     {
         t_Score = t_Score + point;
     }
