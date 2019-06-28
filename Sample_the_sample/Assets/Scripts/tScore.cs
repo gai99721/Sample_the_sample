@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/***************
+ * 担　当：小林*
+ * 制作日：    *
+ * *************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NCMB;
@@ -28,9 +33,9 @@ public class tScore : MonoBehaviour {
         Initialize();
 
         // ハイスコアを取得する。保存されてなければ0点。
-        string name = FindObjectOfType<UserAuth>().currentPlayer();
+        string name = FindObjectOfType<UserAuth>().CurrentPlayer();
         highScore = new NCMB.tHightScore(0, name);
-        highScore.fetch();
+        highScore.Fetch();
     }
 
     void Update()
@@ -70,7 +75,7 @@ public class tScore : MonoBehaviour {
         // ハイスコアを保存する（ただし記録の更新があったときだけ）
         if (isNewRecord)
         {
-            highScore.save();
+            highScore.Save();
         }
 
         // ゲーム開始前の状態に戻す

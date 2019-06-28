@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***************
+ * 担　当：小林*
+ * 制作日：    *
+ * *************/
+
+using UnityEngine;
 using System.Collections;
 using NCMB;
 using System.Collections.Generic;
@@ -10,7 +15,7 @@ public class UserAuth : MonoBehaviour
 
     // mobile backendに接続してログイン ------------------------
 
-    public void logIn(string id, string pw)
+    public void LogIn(string id, string pw)
     {
 
         NCMBUser.LogInAsync(id, pw, (NCMBException e) => {
@@ -42,7 +47,7 @@ public class UserAuth : MonoBehaviour
 
     // mobile backendに接続してログアウト ------------------------
 
-    public void logOut()
+    public void LogOut()
     {
 
         NCMBUser.LogOutAsync((NCMBException e) => {
@@ -54,7 +59,7 @@ public class UserAuth : MonoBehaviour
     }
 
     // 現在のプレイヤー名を返す --------------------
-    public string currentPlayer()
+    public string CurrentPlayer()
     {
         return currentPlayerName;
     }

@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***************
+ * 担　当：小林*
+ * 制作日：    *
+ * *************/
+
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
@@ -24,7 +29,7 @@ public class Manager : MonoBehaviour
     {
         if (!IsPlaying())
         {
-            drawButton();
+            DrawButton();
 
             if (leaderBoardButton)
             {
@@ -33,7 +38,7 @@ public class Manager : MonoBehaviour
 
             // ログアウトボタンが押されたら
             if (logOutButton)
-                FindObjectOfType<UserAuth>().logOut();
+                FindObjectOfType<UserAuth>().LogOut();
 
             // 画面タップでゲームスタート
             if (Event.current.type == EventType.MouseDown)
@@ -41,7 +46,7 @@ public class Manager : MonoBehaviour
         }
 
         // ログアウト完了してたらログインメニューに戻る
-        if (FindObjectOfType<UserAuth>().currentPlayer() == null)
+        if (FindObjectOfType<UserAuth>().CurrentPlayer() == null)
             SceneManager.LoadScene("Login");
     }
 
@@ -65,7 +70,7 @@ public class Manager : MonoBehaviour
         return title.activeSelf == false;
     }
 
-    private void drawButton()
+    private void DrawButton()
     {
         // ボタンの設置
         int btnW = 140, btnH = 50;

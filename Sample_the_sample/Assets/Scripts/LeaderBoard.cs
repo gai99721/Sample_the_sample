@@ -1,4 +1,9 @@
-﻿using NCMB;
+﻿/***************
+ * 担　当：小林*
+ * 制作日：    *
+ * *************/
+
+using NCMB;
 using System.Collections.Generic;
 
 public class LeaderBoard
@@ -9,7 +14,7 @@ public class LeaderBoard
     public List<NCMB.tHightScore> neighbors = null;
 
     // 現プレイヤーのハイスコアを受けとってランクを取得 ---------------
-    public void fetchRank(int currentScore)
+    public void FetchRank(int currentScore)
     {
         // データスコアの「HighScore」から検索
         NCMBQuery<NCMBObject> rankQuery = new NCMBQuery<NCMBObject>("HighScore");
@@ -29,7 +34,7 @@ public class LeaderBoard
     }
 
     // サーバーからトップ5を取得 ---------------    
-    public void fetchTopRankers()
+    public void FetchTopRankers()
     {
         // データストアの「HighScore」クラスから検索
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
@@ -58,7 +63,7 @@ public class LeaderBoard
     }
 
     // サーバーからrankの前後2件を取得 ---------------
-    public void fetchNeighbors()
+    public void FetchNeighbors()
     {
         neighbors = new List<NCMB.tHightScore>();
 

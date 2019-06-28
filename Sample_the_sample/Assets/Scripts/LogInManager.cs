@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***************
+ * 担　当：小林*
+ * 制作日：    *
+ * *************/
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -25,7 +30,7 @@ public class LogInManager : MonoBehaviour
     void Start()
     {
 
-        FindObjectOfType<UserAuth>().logOut();
+        FindObjectOfType<UserAuth>().LogOut();
 
         // ゲームオブジェクトを検索し取得する
         guiTextLogIn = GameObject.Find("GUITextLogIn");
@@ -44,11 +49,11 @@ public class LogInManager : MonoBehaviour
         if (isLogIn)
         {
 
-            drawLogInMenu();
+            DrawLogInMenu();
 
             // ログインボタンが押されたら
             if (logInButton)
-                FindObjectOfType<UserAuth>().logIn(id, pw);
+                FindObjectOfType<UserAuth>().LogIn(id, pw);
 
             // 新規登録画面に移動するボタンが押されたら
             if (signUpMenuButton)
@@ -59,7 +64,7 @@ public class LogInManager : MonoBehaviour
         else
         {
 
-            drawSignUpMenu();
+            DrawSignUpMenu();
 
             // 新規登録ボタンが押されたら
             if (signUpButton)
@@ -71,13 +76,13 @@ public class LogInManager : MonoBehaviour
         }
 
         // currentPlayerを毎フレーム監視し、ログインが完了したら
-        if (FindObjectOfType<UserAuth>().currentPlayer() != null)
+        if (FindObjectOfType<UserAuth>().CurrentPlayer() != null)
             //Debug.Log("ログイン成功");
             SceneManager.LoadScene("Stage");
 
     }
 
-    private void drawLogInMenu()
+    private void DrawLogInMenu()
     {
         // テキスト切り替え
         guiTextSignUp.SetActive(false);
@@ -97,7 +102,7 @@ public class LogInManager : MonoBehaviour
 
     }
 
-    private void drawSignUpMenu()
+    private void DrawSignUpMenu()
     {
         // テキスト切り替え
         guiTextLogIn.SetActive(false);

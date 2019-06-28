@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/***************
+ * 担　当：小林*
+ * 制作日：    *
+ * *************/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NCMB;
@@ -19,7 +24,7 @@ namespace NCMB
         }
 
         // サーバーにハイスコアを保存
-        public void save()
+        public void Save()
         {
             // データストアの「HighScore」クラスから、Nameをキーにして検索
             NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
@@ -37,7 +42,7 @@ namespace NCMB
         }
 
         // サーバーからハイスコアを取得
-        public void fetch()
+        public void Fetch()
         {
             // データストアの「HighScore」クラスから、Nameをキーにして検索
             NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");

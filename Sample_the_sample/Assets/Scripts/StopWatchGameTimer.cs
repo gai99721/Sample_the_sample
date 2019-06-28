@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/*
+ *担  当 : 原口友稀
+ *制作日 : 2019/6
+ * 
+ *変更日
+ * 原口友稀 2019/6/28 変数名関数名の変更
+ */
+
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,25 +15,25 @@ using UnityEngine.SceneManagement;
 
 public class StopWatchGameTimer : MonoBehaviour
 {
-    public GameObject Timer_object = null;
-    public GameObject Judg_object = null;
-    public GameObject Text1_object = null;
-    public GameObject Text2_object = null;
-    public GameObject Title_object = null;
+    public GameObject timerObject = null;
+    public GameObject judgObject = null;
+    public GameObject text1Object = null;
+    public GameObject text2Object = null;
+    public GameObject titleObject = null;
     float timer = 0f;//タイマー
     float judg = 0;//判定するための変数
     int num = 0;//目標の数字
-    float Darkening = 0;//暗転させる時間
-    bool Stopflg = false;
-    bool Startflg = false;
+    float darkeinng = 0;//暗転させる時間
+    bool stopFlg = false;
+    bool startFlg = false;
     int i = 0;
-    int num_flg = 0;
+    int numFlg = 0;
     public float point;
 
     private bool backButton;
     private bool retryButton;
 
-    bool Gameflg = false;
+    bool gameFlg = false;
 
     // Update is called once per frame
     void Update()
@@ -32,32 +41,32 @@ public class StopWatchGameTimer : MonoBehaviour
         if (i == 0)
         {
             num = Random.Range(5, 31);//5以上31未満の数字をランダムで表示
-            Darkening = num / 2;
+            darkeinng = num / 2;
             i++;
         }
         TextCheck();//テキストの入れ替え関数
         StartCheck();//スタートしたかどうかの関数
-        if (Startflg == true)
+        if (startFlg == true)
         {
             StopCheck();//止めたかどうか
         }
     }
     void TextCheck()
     {
-        Text Text1_text = Text1_object.GetComponent<Text>();
-        Text Title_text = Title_object.GetComponent<Text>();
-        Text Text2_text = Text2_object.GetComponent<Text>();
-        if (Gameflg == true)
+        Text text1Text = text1Object.GetComponent<Text>();
+        Text text2Text = text2Object.GetComponent<Text>();
+        Text titleText = titleObject.GetComponent<Text>();
+        if (gameFlg == true)
         {
-            if (Startflg == false)
+            if (startFlg == false)
             {
-                Text1_text.text = "タップすると始まります";
-                Text2_text.text = "目標数" + num + " 暗転開始が" + Darkening;
-                Title_text.text = "";
+                text1Text.text = "タップすると始まります";
+                text2Text.text = "目標数" + num + " 暗転開始が" + darkeinng;
+                titleText.text = "";
             }
             else
             {
-                Text1_text.text = "タップすると止まります";
+                text1Text.text = "タップすると止まります";
 
             }
         }
@@ -67,15 +76,15 @@ public class StopWatchGameTimer : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            num_flg += 1;
+            numFlg += 1;
         }
-        switch (num_flg)
+        switch (numFlg)
         {
             case 1:
-                Gameflg = true;
+                gameFlg = true;
                 break;
             case 2:
-                Startflg = true;
+                startFlg = true;
                 break;
             default:
                 break;
@@ -83,32 +92,32 @@ public class StopWatchGameTimer : MonoBehaviour
     }
     void StopCheck()
     {
-        Text Timer_text = Timer_object.GetComponent<Text>();
-        Text Judg_text = Judg_object.GetComponent<Text>();
+        Text timerText = timerObject.GetComponent<Text>();
+        Text judgText = judgObject.GetComponent<Text>();
 
-        if (Input.GetMouseButtonDown(0) && Startflg == true)
+        if (Input.GetMouseButtonDown(0) && startFlg == true)
         {
-            Stopflg = true;
+            stopFlg = true;
         }
 
-        if (Stopflg == false)
+        if (stopFlg == false)
         {
 
             timer += Time.deltaTime;//0.01000f;
-            if (timer < Darkening)
+            if (timer < darkeinng)
             {
-                Timer_text.text = "" + timer;
+                timerText.text = "" + timer;
             }
             else
             {
-                Timer_text.text = "XX.XXXXX";
+                timerText.text = "XX.XXXXX";
             }
         }
         else
         {
             Judgment();//判定
-            Timer_text.text = "" + timer;
-            Judg_text.text = "" + judg;
+            timerText.text = "" + timer;
+            judgText.text = "" + judg;
             point = judg;
             FindObjectOfType<tScore>().AddPoint(point);
         }
@@ -135,7 +144,7 @@ public class StopWatchGameTimer : MonoBehaviour
     void OnGUI()
     {
 
-        if (Stopflg == true)
+        if (stopFlg == true)
         {
             drawMenu();
         }

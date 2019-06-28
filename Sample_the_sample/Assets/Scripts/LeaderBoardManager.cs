@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/***************
+ * 担　当：小林*
+ * 制作日：    *
+ * *************/
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
@@ -35,9 +40,9 @@ public class LeaderBoardManager : MonoBehaviour
         isLeaderBoardFetched = false;
 
         // 現在のハイスコアを取得
-        string name = FindObjectOfType<UserAuth>().currentPlayer();
+        string name = FindObjectOfType<UserAuth>().CurrentPlayer();
         currentHighScore = new NCMB.tHightScore(-1, name);
-        currentHighScore.fetch();
+        currentHighScore.Fetch();
     }
 
     void Update()
@@ -45,15 +50,15 @@ public class LeaderBoardManager : MonoBehaviour
         // 現在のハイスコアの取得が完了したら1度だけ実行
         if (currentHighScore.score != -1 && !isScoreFetched)
         {
-            lBoard.fetchRank(currentHighScore.score);
+            lBoard.FetchRank(currentHighScore.score);
             isScoreFetched = true;
         }
 
         // 現在の順位の取得が完了したら1度だけ実行
         if (lBoard.currentRank != 0 && !isRankFetched)
         {
-            lBoard.fetchTopRankers();
-            lBoard.fetchNeighbors();
+            lBoard.FetchTopRankers();
+            lBoard.FetchNeighbors();
             isRankFetched = true;
         }
 
@@ -82,13 +87,13 @@ public class LeaderBoardManager : MonoBehaviour
 
     void OnGUI()
     {
-        drawMenu();
+        DrawMenu();
         // 戻るボタンが押されたら
         if (backButton)
             SceneManager.LoadScene("Stage");
     }
 
-    private void drawMenu()
+    private void DrawMenu()
     {
         // ボタンの設置
         int btnW = 170, btnH = 30;
