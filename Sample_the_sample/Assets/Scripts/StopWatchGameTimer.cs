@@ -10,6 +10,7 @@ public class StopWatchGameTimer : MonoBehaviour
     public GameObject Judg_object = null;
     public GameObject Text1_object = null;
     public GameObject Text2_object = null;
+    public GameObject Title_object = null;
     float timer = 0f;//タイマー
     float judg = 0;//判定するための変数
     int num = 0;//目標の数字
@@ -44,6 +45,7 @@ public class StopWatchGameTimer : MonoBehaviour
     void TextCheck()
     {
         Text Text1_text = Text1_object.GetComponent<Text>();
+        Text Title_text = Title_object.GetComponent<Text>();
         Text Text2_text = Text2_object.GetComponent<Text>();
         if (Gameflg == true)
         {
@@ -51,7 +53,7 @@ public class StopWatchGameTimer : MonoBehaviour
             {
                 Text1_text.text = "タップすると始まります";
                 Text2_text.text = "目標数" + num + " 暗転開始が" + Darkening;
-
+                Title_text.text = "";
             }
             else
             {
