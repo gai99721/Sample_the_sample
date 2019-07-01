@@ -120,7 +120,6 @@ public class StopWatchGameTimer : MonoBehaviour
             //time = judg;
             //FindObjectOfType<tScore>().AddPoint(time);
         }
-
     }
 
     public static float SetTime()
@@ -153,6 +152,8 @@ public class StopWatchGameTimer : MonoBehaviour
         {
             judg = timer;
         }
+
+        FindObjectOfType<tScore>().AddPoint();
 
     }
     void OnGUI()

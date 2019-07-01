@@ -27,6 +27,8 @@ public class tScore : MonoBehaviour {
     private NCMB.tHightScore highScore;
     private bool isNewRecord;
 
+    public StopWatchGameTimer StopWatchGameTimer = new StopWatchGameTimer();
+
     // PlayerPrefsで保存するためのキー
     //private string highScoreKey = "highScore";
 
