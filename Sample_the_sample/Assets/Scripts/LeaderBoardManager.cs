@@ -90,7 +90,7 @@ public class LeaderBoardManager : MonoBehaviour
         DrawMenu();
         // 戻るボタンが押されたら
         if (backButton)
-            SceneManager.LoadScene("Stage");
+            SceneManager.LoadScene("StopWatchGame");
     }
 
     private void DrawMenu()

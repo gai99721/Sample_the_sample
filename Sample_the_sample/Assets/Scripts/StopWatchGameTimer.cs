@@ -21,14 +21,13 @@ public class StopWatchGameTimer : MonoBehaviour
     public GameObject text2Object = null;
     public GameObject titleObject = null;
     float timer = 0f;//タイマー
-    float judg = 0;//判定するための変数
+    public static float judg = 0;//判定するための変数
     int num = 0;//目標の数字
     float darkeinng = 0;//暗転させる時間
     bool stopFlg = false;
     bool startFlg = false;
     int i = 0;
     int numFlg = 0;
-    public float point;
 
     private bool backButton;
     private bool retryButton;
@@ -118,11 +117,26 @@ public class StopWatchGameTimer : MonoBehaviour
             Judgment();//判定
             timerText.text = "" + timer;
             judgText.text = "" + judg;
-            point = judg;
-            FindObjectOfType<tScore>().AddPoint(point);
+            //time = judg;
+            //FindObjectOfType<tScore>().AddPoint(time);
         }
 
     }
+
+    public static float SetTime()
+    {
+        float timeScore;
+        timeScore = GetTime(judg);
+        return timeScore;
+    }
+
+    public static float GetTime(float judg)
+    {
+        float setScore;
+        setScore = judg;
+        return setScore;
+    }
+
     void Judgment()
     {
         if (timer > num)
@@ -152,7 +166,7 @@ public class StopWatchGameTimer : MonoBehaviour
         // 戻るボタンが押されたら
         if (backButton)
         {
-            SceneManager.LoadScene("Stage");
+            SceneManager.LoadScene("StopWatchGame");
         }
 
         if (retryButton)

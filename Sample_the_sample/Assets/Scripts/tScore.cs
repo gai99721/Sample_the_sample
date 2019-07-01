@@ -19,6 +19,8 @@ public class tScore : MonoBehaviour {
     // スコア
     public float t_Score;
 
+    public float time = 0.0f;
+
     // ハイスコア
     //private int highScore;
 
@@ -63,9 +65,11 @@ public class tScore : MonoBehaviour {
     }
 
     // ポイントの追加
-    public void AddPoint(float point)
+    public void AddPoint()
     {
-        t_Score = point;
+        time = StopWatchGameTimer.SetTime();
+        Debug.Log("addpoint");
+        t_Score = time;
         Save();
     }
 

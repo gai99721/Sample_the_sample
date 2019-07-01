@@ -868,12 +868,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e2293bb5506dd4ca4e5222606903aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer_object: {fileID: 1091674291}
-  Judg_object: {fileID: 1592117698}
-  Text1_object: {fileID: 1070800164}
-  Text2_object: {fileID: 622195044}
-  Title_object: {fileID: 1086583081}
-  point: 0
+  timerObject: {fileID: 1091674291}
+  judgObject: {fileID: 1592117698}
+  text1Object: {fileID: 1070800164}
+  text2Object: {fileID: 622195044}
+  titleObject: {fileID: 1086583081}
 --- !u!4 &2121105538
 Transform:
   m_ObjectHideFlags: 0
