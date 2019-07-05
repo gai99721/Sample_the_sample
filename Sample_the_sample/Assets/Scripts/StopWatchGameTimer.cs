@@ -127,6 +127,7 @@ public class StopWatchGameTimer : MonoBehaviour
     {
         float timeScore;
         timeScore = GetTime(judg);
+        //Debug.Log("timeScore : " + timeScore);
         return timeScore;
     }
 
@@ -153,7 +154,7 @@ public class StopWatchGameTimer : MonoBehaviour
         {
             judg = timer;
         }
-
+        tScore .AddPoint();
     }
     void OnGUI()
     {

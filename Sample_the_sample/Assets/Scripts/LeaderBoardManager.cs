@@ -12,7 +12,7 @@ public class LeaderBoardManager : MonoBehaviour
 {
 
     private LeaderBoard lBoard;
-    private NCMB.tHightScore currentHighScore;
+    private  NCMB.tHightScore currentHighScore;
     public GameObject[] top = new GameObject[5];
     public GameObject[] nei = new GameObject[5];
 

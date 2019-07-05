@@ -13,26 +13,31 @@ namespace NCMB
     public class tHightScore
     {
 
-        public int score { get; set; }
-        public string name { get; private set; }
+        public  float score { get; set; }
+        public  string name { get; private set; }
 
         // コンストラクタ
-        public tHightScore(int _score, string _name)
+        public tHightScore(float _score, string _name)
         {
             score = _score;
             name = _name;
         }
 
         // サーバーにハイスコアを保存
-        public void Save()
+        public  void Save()
         {
+            Debug.Log("score Save:" + score);
+            Debug.Log("name Save:" + name);
+
             // データストアの「HighScore」クラスから、Nameをキーにして検索
             NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
             query.WhereEqualTo("Name", name);
             query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
             {
 
-                //検索成功したら
+                       Debug.Log("score:" + score);
+                    Debug.Log("name:" + name);
+             //検索成功したら
                 if (e == null)
                 {
                     objList[0]["Score"] = score;

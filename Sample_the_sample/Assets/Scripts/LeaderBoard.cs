@@ -14,7 +14,7 @@ public class LeaderBoard
     public List<NCMB.tHightScore> neighbors = null;
 
     // 現プレイヤーのハイスコアを受けとってランクを取得 ---------------
-    public void FetchRank(int currentScore)
+    public void FetchRank(float currentScore)
     {
         // データスコアの「HighScore」から検索
         NCMBQuery<NCMBObject> rankQuery = new NCMBQuery<NCMBObject>("HighScore");

@@ -17,15 +17,13 @@ public class tScore : MonoBehaviour {
     public GUIText highScoreGUIText;
 
     // スコア
-    public float t_Score;
+    public static  float t_Score;
 
-    public float time = 0.0f;
+    public static  float time;
 
     // ハイスコア
-    //private int highScore;
-
-    private NCMB.tHightScore highScore;
-    private bool isNewRecord;
+    private static  NCMB.tHightScore highScore;
+    private static  bool isNewRecord;
 
     // PlayerPrefsで保存するためのキー
     //private string highScoreKey = "highScore";
@@ -45,7 +43,7 @@ public class tScore : MonoBehaviour {
         // スコアがハイスコアより大きければ
         if (highScore.score < t_Score)
         {
-            isNewRecord = true;
+            isNewRecord = !isNewRecord;
             highScore.score = (int)t_Score;
         }
 
@@ -55,30 +53,33 @@ public class tScore : MonoBehaviour {
     }
 
     // ゲーム開始前の状態に戻す
-    private void Initialize()
+    private static  void Initialize()
     {
         // スコアを0に戻す
         t_Score = 0;
         //SceneManager.LoadScene("LeaderBoard");
         // ハイスコアを取得する。保存されてなければ0を取得する。
-        isNewRecord = false;
+        isNewRecord = !isNewRecord;
     }
 
     // ポイントの追加
-    public void AddPoint()
+    public static void AddPoint()
     {
         time = StopWatchGameTimer.SetTime();
-        Debug.Log("addpoint");
+        //Debug.Log("addpoint");
         t_Score = time;
+        //Debug.Log("time : " + time);
+        //Debug.Log("t_Score : " + t_Score);
         Save();
     }
 
     // ハイスコアの保存
-    public void Save()
+    public static  void Save()
     {
         // ハイスコアを保存する（ただし記録の更新があったときだけ）
         if (isNewRecord)
         {
+            Debug.Log(t_Score);
             highScore.Save();
         }
 
