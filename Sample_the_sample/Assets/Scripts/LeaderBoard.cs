@@ -14,7 +14,7 @@ public class LeaderBoard
     public List<NCMB.tHightScore> neighbors = null;
 
     // 現プレイヤーのハイスコアを受けとってランクを取得 ---------------
-    public void FetchRank(float currentScore)
+    public void FetchRank(double currentScore)
     {
         // データスコアの「HighScore」から検索
         NCMBQuery<NCMBObject> rankQuery = new NCMBQuery<NCMBObject>("HighScore");
@@ -53,7 +53,7 @@ public class LeaderBoard
                 // 取得したレコードをHighScoreクラスとして保存
                 foreach (NCMBObject obj in objList)
                 {
-                    float s = System.Convert.ToInt32(obj["Score"]);
+                    double s = System.Convert.ToDouble(obj["Score"]);
                     string n = System.Convert.ToString(obj["Name"]);
                     list.Add(new tHightScore(s, n));
                 }
@@ -89,7 +89,7 @@ public class LeaderBoard
                 // 取得したレコードをHighScoreクラスとして保存
                 foreach (NCMBObject obj in objList)
                 {
-                    int s = System.Convert.ToInt32(obj["Score"]);
+                    double s = System.Convert.ToDouble(obj["Score"]);
                     string n = System.Convert.ToString(obj["Name"]);
                     list.Add(new tHightScore(s, n));
                 }

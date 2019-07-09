@@ -13,11 +13,11 @@ namespace NCMB
     public class tHightScore
     {
 
-        public  float score { get; set; }
+        public  double score { get; set; }
         public  string name { get; private set; }
 
         // コンストラクタ
-        public tHightScore(float _score, string _name)
+        public tHightScore(double _score, string _name)
         {
             Debug.Log("_score : " + _score);
             score = _score;
@@ -26,7 +26,7 @@ namespace NCMB
         }
 
         // サーバーにハイスコアを保存
-        public void Save()
+        public void Save(double score)
         {
             // データストアの「HighScore」クラスから、Nameをキーにして検索
             NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");

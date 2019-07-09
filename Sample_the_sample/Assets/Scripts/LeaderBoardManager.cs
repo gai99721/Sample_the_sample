@@ -41,7 +41,7 @@ public class LeaderBoardManager : MonoBehaviour
 
         // 現在のハイスコアを取得
         string name = FindObjectOfType<UserAuth>().CurrentPlayer();
-        currentHighScore = new NCMB.tHightScore(9999, name);
+        currentHighScore = new NCMB.tHightScore(9999.0, name);
         currentHighScore.Fetch();
     }
 
