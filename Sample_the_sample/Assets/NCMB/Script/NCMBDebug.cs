@@ -41,7 +41,7 @@ namespace NCMB.Internal
 		[Conditional("DEBUG")]
 		public static void Log (string message)
 		{
-			UnityEngine.Debug.Log (message);
+			//UnityEngine.Debug.Log (message);
 		}
 		
 		/// <summary>

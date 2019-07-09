@@ -12,7 +12,7 @@ public class LeaderBoardManager : MonoBehaviour
 {
 
     private LeaderBoard lBoard;
-    private NCMB.tHightScore currentHighScore;
+    private  NCMB.tHightScore currentHighScore;
     public GameObject[] top = new GameObject[5];
     public GameObject[] nei = new GameObject[5];
 
@@ -41,7 +41,7 @@ public class LeaderBoardManager : MonoBehaviour
 
         // 現在のハイスコアを取得
         string name = FindObjectOfType<UserAuth>().CurrentPlayer();
-        currentHighScore = new NCMB.tHightScore(-1, name);
+        currentHighScore = new NCMB.tHightScore(9999, name);
         currentHighScore.Fetch();
     }
 

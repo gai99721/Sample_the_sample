@@ -11,23 +11,23 @@ using NCMB;
 public class tScore : MonoBehaviour {
 
     // スコアを表示するGUIText
-    public GUIText scoreGUIText;
+   // public GUIText scoreGUIText;
 
     // ハイスコアを表示するGUIText
-    public GUIText highScoreGUIText;
+  //  public GUIText highScoreGUIText;
 
     // スコア
-    public float t_Score;
+    public  float t_Score;
 
-    public float time = 0.0f;
+    public  float time = 0.0f;
 
     // ハイスコア
     //private int highScore;
 
-    private NCMB.tHightScore highScore;
-    private bool isNewRecord;
+    public  NCMB.tHightScore highScore;
+    private  bool isNewRecord;
 
-    public StopWatchGameTimer StopWatchGameTimer = new StopWatchGameTimer();
+  //  public StopWatchGameTimer StopWatchGameTimer = new StopWatchGameTimer();
 
     // PlayerPrefsで保存するためのキー
     //private string highScoreKey = "highScore";
@@ -38,26 +38,28 @@ public class tScore : MonoBehaviour {
 
         // ハイスコアを取得する。保存されてなければ0点。
         string name = FindObjectOfType<UserAuth>().CurrentPlayer();
-        highScore = new NCMB.tHightScore(0, name);
+        highScore = new NCMB.tHightScore(9999, name);
         highScore.Fetch();
     }
 
     void Update()
     {
+
         // スコアがハイスコアより大きければ
-        if (highScore.score < t_Score)
+        if (highScore.score > t_Score)
         {
-            isNewRecord = true;
-            highScore.score = (int)t_Score;
+     //       Debug.Log("ok");
+            isNewRecord = !isNewRecord;
+            highScore.score = (float)t_Score;
         }
 
         // スコア・ハイスコアを表示する
-        scoreGUIText.text = t_Score.ToString();
-        highScoreGUIText.text = "HighScore : " + highScore.score.ToString();
+     //   scoreGUIText.text = t_Score.ToString();
+      //  highScoreGUIText.text = "HighScore : " + highScore.score.ToString();
     }
 
     // ゲーム開始前の状態に戻す
-    private void Initialize()
+    private  void Initialize()
     {
         // スコアを0に戻す
         t_Score = 0;
@@ -67,20 +69,26 @@ public class tScore : MonoBehaviour {
     }
 
     // ポイントの追加
-    public void AddPoint()
+    public  void AddPoint( float time)
     {
-        time = StopWatchGameTimer.SetTime();
-        Debug.Log("addpoint");
+        // time = StopWatchGameTimer.SetTime();
+        //  Debug.Log("addpoint");
+        //Debug.Log("addpoint.time : " + time);
         t_Score = time;
         Save();
     }
 
     // ハイスコアの保存
-    public void Save()
+    public  void Save()
     {
+          //  Debug.Log("score" + t_Score);
+      //  Debug.Log("isNewRecord1" + isNewRecord);
+
+
         // ハイスコアを保存する（ただし記録の更新があったときだけ）
-        if (isNewRecord)
+        if (!isNewRecord )
         {
+             // Debug.Log("isNewRecord2"+ isNewRecord );
             highScore.Save();
         }
 

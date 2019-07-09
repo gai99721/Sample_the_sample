@@ -21,7 +21,7 @@ public class StopWatchGameTimer : MonoBehaviour
     public GameObject text2Object = null;
     public GameObject titleObject = null;
     float timer = 0f;//タイマー
-    public static float judg = 0;//判定するための変数
+    public float judg = 0;//判定するための変数
     int num = 0;//目標の数字
     float darkeinng = 0;//暗転させる時間
     bool stopFlg = false;
@@ -122,19 +122,6 @@ public class StopWatchGameTimer : MonoBehaviour
         }
     }
 
-    public static float SetTime()
-    {
-        float timeScore;
-        timeScore = GetTime(judg);
-        return timeScore;
-    }
-
-    public static float GetTime(float judg)
-    {
-        float setScore;
-        setScore = judg;
-        return setScore;
-    }
 
     void Judgment()
     {
@@ -153,7 +140,8 @@ public class StopWatchGameTimer : MonoBehaviour
             judg = timer;
         }
 
-        FindObjectOfType<tScore>().AddPoint();
+        FindObjectOfType<tScore>().AddPoint(judg);
+        //tScore.AddPoint(judg);
 
     }
     void OnGUI()

@@ -13,13 +13,15 @@ namespace NCMB
     public class tHightScore
     {
 
-        public int score { get; set; }
-        public string name { get; private set; }
+        public  float score { get; set; }
+        public  string name { get; private set; }
 
         // コンストラクタ
-        public tHightScore(int _score, string _name)
+        public tHightScore(float _score, string _name)
         {
+            Debug.Log("_score : " + _score);
             score = _score;
+            Debug.Log("score : " + score);
             name = _name;
         }
 
@@ -31,10 +33,11 @@ namespace NCMB
             query.WhereEqualTo("Name", name);
             query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
             {
-
+                Debug.Log("tHighScore.score : "+score);
                 //検索成功したら
                 if (e == null)
                 {
+                    Debug.Log("tHighScore Save");
                     objList[0]["Score"] = score;
                     objList[0].SaveAsync();
                 }
@@ -58,9 +61,9 @@ namespace NCMB
                     {
                         NCMBObject obj = new NCMBObject("HighScore");
                         obj["Name"] = name;
-                        obj["Score"] = 0;
+                        obj["Score"] = 9999;
                         obj.SaveAsync();
-                        score = 0;
+                        score = 9999;
                     }
                     // ハイスコアが登録済みだったら
                     else
