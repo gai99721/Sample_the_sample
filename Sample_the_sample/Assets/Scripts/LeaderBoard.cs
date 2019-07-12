@@ -18,7 +18,7 @@ public class LeaderBoard
     {
         // データスコアの「HighScore」から検索
         NCMBQuery<NCMBObject> rankQuery = new NCMBQuery<NCMBObject>("HighScore");
-        rankQuery.WhereGreaterThan("Score", currentScore);
+        rankQuery.WhereLessThan("Score", currentScore);
         rankQuery.CountAsync((int count, NCMBException e) => {
 
             if (e != null)
@@ -38,7 +38,7 @@ public class LeaderBoard
     {
         // データストアの「HighScore」クラスから検索
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
-        query.OrderByDescending("Score");
+        query.OrderByAscending("Score");
         query.Limit = 5;
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
 
@@ -73,7 +73,7 @@ public class LeaderBoard
 
         // データストアの「HighScore」クラスから検索
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
-        query.OrderByDescending("Score");
+        query.OrderByAscending("Score");
         query.Skip = numSkip;
         query.Limit = 5;
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
