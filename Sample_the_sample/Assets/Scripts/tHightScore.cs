@@ -33,7 +33,7 @@ namespace NCMB
             query.WhereEqualTo("Name", name);
             query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
             {
-                Debug.Log("tHighScore.score : "+score);
+                //Debug.Log("tHighScore.score : " + score);
                 //検索成功したら
                 if (e == null)
                 {
@@ -61,14 +61,14 @@ namespace NCMB
                     {
                         NCMBObject obj = new NCMBObject("HighScore");
                         obj["Name"] = name;
-                        obj["Score"] = 9999;
+                        obj["Score"] = 10;
                         obj.SaveAsync();
-                        score = 9999;
+                        score = 10;
                     }
                     // ハイスコアが登録済みだったら
                     else
                     {
-                        score = System.Convert.ToInt32(objList[0]["Score"]);
+                        score = System.Convert.ToDouble(objList[0]["Score"]);
                     }
                 }
             });
