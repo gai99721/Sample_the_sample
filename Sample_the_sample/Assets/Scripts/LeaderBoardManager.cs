@@ -7,18 +7,19 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LeaderBoardManager : MonoBehaviour
 {
 
     private LeaderBoard lBoard;
-    private  NCMB.tHightScore currentHighScore;
+    private  NCMB.HightScore currentHighScore;
     public GameObject[] top = new GameObject[5];
     public GameObject[] nei = new GameObject[5];
 
-    bool isScoreFetched;
-    bool isRankFetched;
-    bool isLeaderBoardFetched;
+    private bool isScoreFetched;
+    private bool isRankFetched;
+    private bool isLeaderBoardFetched;
 
     // ボタンが押されると対応する変数がtrueになる
     private bool backButton;
@@ -41,16 +42,16 @@ public class LeaderBoardManager : MonoBehaviour
 
         // 現在のハイスコアを取得
         string name = FindObjectOfType<UserAuth>().CurrentPlayer();
-        currentHighScore = new NCMB.tHightScore(10, name);
+        currentHighScore = new NCMB.HightScore(10, name);
         currentHighScore.Fetch();
     }
 
     void Update()
     {
         // 現在のハイスコアの取得が完了したら1度だけ実行
-        if (currentHighScore.score != -1 && !isScoreFetched)
+        if (currentHighScore.Score != -1 && !isScoreFetched)
         {
-            lBoard.FetchRank(currentHighScore.score);
+            lBoard.FetchRank(currentHighScore.Score);
             isScoreFetched = true;
         }
 
@@ -73,19 +74,19 @@ public class LeaderBoardManager : MonoBehaviour
             // 取得したトップ5ランキングを表示
             for (int i = 0; i < lBoard.topRankers.Count; ++i)
             {
-                top[i].GetComponent<GUIText>().text = i + 1 + ". " + lBoard.topRankers[i].print();
+                top[i].GetComponent<GUIText>().text = i + 1 + ". " + lBoard.topRankers[i].Print();
             }
 
             // 取得したライバルランキングを表示
             for (int i = 0; i < lBoard.neighbors.Count; ++i)
             {
-                nei[i].GetComponent<GUIText>().text = lBoard.currentRank - offset + i + ". " + lBoard.neighbors[i].print();
+                nei[i].GetComponent<GUIText>().text = lBoard.currentRank - offset + i + ". " + lBoard.neighbors[i].Print();
             }
             isLeaderBoardFetched = true;
         }
     }
 
-    void OnGUI()
+    private void OnGUI()
     {
         DrawMenu();
         // 戻るボタンが押されたら

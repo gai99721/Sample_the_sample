@@ -103,14 +103,14 @@
     <Compile Include="Assets\NCMB\Script\Task\NCMBScriptTaskExtension.cs" />
     <Compile Include="Assets\NCMB\Script\Task\NCMBUserTaskExtension.cs" />
     <Compile Include="Assets\NCMB\Script\Task\NCMBUserTaskMethods.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameStart.cs" />
+    <Compile Include="Assets\Scripts\HightScore.cs" />
     <Compile Include="Assets\Scripts\LeaderBoard.cs" />
     <Compile Include="Assets\Scripts\LeaderBoardManager.cs" />
     <Compile Include="Assets\Scripts\LogInManager.cs" />
-    <Compile Include="Assets\Scripts\Manager.cs" />
+    <Compile Include="Assets\Scripts\Score.cs" />
     <Compile Include="Assets\Scripts\StopWatchGameTimer.cs" />
-    <Compile Include="Assets\Scripts\tHightScore.cs" />
-    <Compile Include="Assets\Scripts\tScore.cs" />
     <Compile Include="Assets\Scripts\UserAuth.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/nwuser.DA/Documents/進級制作Ⅱ/サンプルゲーム化/Sample_the_sample2/Sample_the_sample/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

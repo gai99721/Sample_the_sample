@@ -10,8 +10,8 @@ public class LeaderBoard
 {
 
     public int currentRank = 0;
-    public List<NCMB.tHightScore> topRankers = null;
-    public List<NCMB.tHightScore> neighbors = null;
+    public List<NCMB.HightScore> topRankers = null;
+    public List<NCMB.HightScore> neighbors = null;
 
     // 現プレイヤーのハイスコアを受けとってランクを取得 ---------------
     public void FetchRank(double currentScore)
@@ -49,13 +49,13 @@ public class LeaderBoard
             else
             {
                 //検索成功時の処理
-                List<NCMB.tHightScore> list = new List<NCMB.tHightScore>();
+                List<NCMB.HightScore> list = new List<NCMB.HightScore>();
                 // 取得したレコードをHighScoreクラスとして保存
                 foreach (NCMBObject obj in objList)
                 {
                     double s = System.Convert.ToDouble(obj["Score"]);
                     string n = System.Convert.ToString(obj["Name"]);
-                    list.Add(new tHightScore(s, n));
+                    list.Add(new HightScore(s, n));
                 }
                 topRankers = list;
             }
@@ -65,7 +65,7 @@ public class LeaderBoard
     // サーバーからrankの前後2件を取得 ---------------
     public void FetchNeighbors()
     {
-        neighbors = new List<NCMB.tHightScore>();
+        neighbors = new List<NCMB.HightScore>();
 
         // スキップする数を決める（ただし自分が1位か2位のときは調整する）
         int numSkip = currentRank - 3;
@@ -85,13 +85,14 @@ public class LeaderBoard
             else
             {
                 //検索成功時の処理
-                List<NCMB.tHightScore> list = new List<NCMB.tHightScore>();
+                List<NCMB.HightScore> list = new List<NCMB.HightScore>();
                 // 取得したレコードをHighScoreクラスとして保存
                 foreach (NCMBObject obj in objList)
                 {
+
                     double s = System.Convert.ToDouble(obj["Score"]);
                     string n = System.Convert.ToString(obj["Name"]);
-                    list.Add(new tHightScore(s, n));
+                    list.Add(new HightScore(s, n));
                 }
                 neighbors = list;
             }

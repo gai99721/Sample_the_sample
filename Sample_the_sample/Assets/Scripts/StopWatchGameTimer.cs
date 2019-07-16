@@ -20,19 +20,20 @@ public class StopWatchGameTimer : MonoBehaviour
     public GameObject text1Object = null;
     public GameObject text2Object = null;
     public GameObject titleObject = null;
-    float timer = 0f;//タイマー
+
+    private float timer = 0f;//タイマー
     public float judg = 0;//判定するための変数
-    int num = 0;//目標の数字
-    float darkeinng = 0;//暗転させる時間
-    bool stopFlg = false;
-    bool startFlg = false;
-    int i = 0;
-    int numFlg = 0;
+    private int num = 0;//目標の数字
+    private float darkeinng = 0;//暗転させる時間
+    private int i = 0;
+    private int numFlg = 0;
+
+    private bool stopFlg = false;
+    private bool startFlg = false;
 
     private bool backButton;
     private bool retryButton;
-
-    bool gameFlg = false;
+    private bool gameFlg = false;
 
     // Update is called once per frame
     void Update()
@@ -50,7 +51,7 @@ public class StopWatchGameTimer : MonoBehaviour
             StopCheck();//止めたかどうか
         }
     }
-    void TextCheck()
+    private void TextCheck()
     {
         Text text1Text = text1Object.GetComponent<Text>();
         Text text2Text = text2Object.GetComponent<Text>();
@@ -71,7 +72,7 @@ public class StopWatchGameTimer : MonoBehaviour
         }
 
     }
-    void StartCheck()
+    private void StartCheck()
     {
         if (Input.GetMouseButtonUp(0))
         {
@@ -89,7 +90,7 @@ public class StopWatchGameTimer : MonoBehaviour
                 break;
         }
     }
-    void StopCheck()
+    private void StopCheck()
     {
         Text timerText = timerObject.GetComponent<Text>();
         Text judgText = judgObject.GetComponent<Text>();
@@ -123,7 +124,7 @@ public class StopWatchGameTimer : MonoBehaviour
     }
 
 
-    void Judgment()
+    private void Judgment()
     {
         if (timer > num)
         {
@@ -140,11 +141,11 @@ public class StopWatchGameTimer : MonoBehaviour
             judg = timer;
         }
 
-        FindObjectOfType<tScore>().AddPoint(judg);
+        FindObjectOfType<Score>().AddPoint(judg);
         //tScore.AddPoint(judg);
 
     }
-    void OnGUI()
+    private void OnGUI()
     {
 
         if (stopFlg == true)
