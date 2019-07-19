@@ -3,6 +3,8 @@
  * 制作日：    *
  * *************/
 
+//20190719 長嶋　確認
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +14,17 @@ namespace NCMB
 {
     public class HighScore
     {
-
-        public  double Score { get; set; }
-        public  string Name { get; private set; }
+        //@Nagashima アクセサー名は2単語以上にしてください
+        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+        /// <summary>
+        /// @brief 簡単な説明
+        /// </summary>
+        public double Score { get; set; }
+        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+        /// <summary>
+        /// @brief 簡単な説明
+        /// </summary>
+        public string Name { get; private set; }
 
         // コンストラクタ
         public HighScore(double _score, string _Name)
@@ -26,6 +36,12 @@ namespace NCMB
         }
 
         // サーバーにハイスコアを保存
+        //@Nagashima 関数名は2単語以上にしてください
+        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+        /// <summary>
+        /// @brief 関数の簡単な説明
+        /// </summary>
+        /// <param name="score">変数の説明</param>
         public void Save(double score)
         {
             // データストアの「HighScore」クラスから、Nameをキーにして検索
@@ -45,6 +61,11 @@ namespace NCMB
         }
 
         // サーバーからハイスコアを取得
+        //@Nagashima 関数名は2単語以上にしてください
+        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+        /// <summary>
+        /// @brief 関数の簡単な説明
+        /// </summary>
         public void Fetch()
         {
             // データストアの「HighScore」クラスから、Nameをキーにして検索
@@ -73,6 +94,12 @@ namespace NCMB
                 }
             });
         }
+
+        //@Nagashima 関数名は2単語以上にしてください
+        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+        /// <summary>
+        /// @brief 関数の簡単な説明
+        /// </summary>
         public string Print()
         {
             return Name + ' ' + Score.ToString("f3") + " sec";

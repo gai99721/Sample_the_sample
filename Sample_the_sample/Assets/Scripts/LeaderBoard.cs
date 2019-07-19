@@ -3,17 +3,24 @@
  * 制作日：    *
  * *************/
 
+//20190719 長嶋　確認
+
 using NCMB;
 using System.Collections.Generic;
 
 public class LeaderBoard
 {
-
+    //@Nagashima 変数はstart関数で初期化するようにしてください
     public int currentRank = 0;
     public List<NCMB.HighScore> topRankers = null;
     public List<NCMB.HighScore> neighbors = null;
 
     // 現プレイヤーのハイスコアを受けとってランクを取得 ---------------
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary> 
+    /// <param name="currentScore"></param>
     public void FetchRank(double currentScore)
     {
         // データスコアの「HighScore」から検索
@@ -33,7 +40,11 @@ public class LeaderBoard
         });
     }
 
-    // サーバーからトップ5を取得 ---------------    
+    // サーバーからトップ5を取得 --------------- 
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary> 
     public void FetchTopRankers()
     {
         // データストアの「HighScore」クラスから検索
@@ -63,6 +74,10 @@ public class LeaderBoard
     }
 
     // サーバーからrankの前後2件を取得 ---------------
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     public void FetchNeighbors()
     {
         neighbors = new List<NCMB.HighScore>();

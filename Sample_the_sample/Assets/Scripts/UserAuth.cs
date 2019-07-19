@@ -3,6 +3,8 @@
  * 制作日：    *
  * *************/
 
+//20190719 長嶋　確認
+
 using UnityEngine;
 using System.Collections;
 using NCMB;
@@ -15,6 +17,12 @@ public class UserAuth : MonoBehaviour
 
     // mobile backendに接続してログイン ------------------------
 
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
+    /// <param name="id">変数の説明</param>
+    /// <param name="pw">変数の説明</param>
     public void LogIn(string id, string pw)
     {
 
@@ -28,7 +36,14 @@ public class UserAuth : MonoBehaviour
     }
 
     // mobile backendに接続して新規会員登録 ------------------------
-
+    //@Nagashima 関数名は単語の区切り1文字目を大文字にしてください
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
+    /// <param name="id">変数の説明</param>
+    /// <param name="mail">変数の説明</param>
+    /// <param name="pw">変数の説明</param>
     public void signUp(string id, string mail, string pw)
     {
 
@@ -46,7 +61,10 @@ public class UserAuth : MonoBehaviour
     }
 
     // mobile backendに接続してログアウト ------------------------
-
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     public void LogOut()
     {
 
@@ -59,13 +77,18 @@ public class UserAuth : MonoBehaviour
     }
 
     // 現在のプレイヤー名を返す --------------------
+    //@Nagashima 変数を取得したいときはアクセサーを使用してください
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     public string CurrentPlayer()
     {
         return currentPlayerName;
     }
 
     // シングルトン化する ------------------------
-
+    //@Nagashima 変数名は2単語以上にしてください
     private UserAuth instance = null;
     void Awake()
     {

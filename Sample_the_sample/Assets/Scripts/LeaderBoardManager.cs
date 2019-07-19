@@ -3,6 +3,8 @@
  * 制作日：    *
  * *************/
 
+//20190719 長嶋　確認
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,9 +13,12 @@ using UnityEngine.UI;
 
 public class LeaderBoardManager : MonoBehaviour
 {
-
+    //@Nagashima lなど先頭単語を1文字だけにしないでください　lenderBoard
     private LeaderBoard lBoard;
     private  NCMB.HighScore currentHighScore;
+
+    //@Nagashima 変数はできる限りprivateを使用するようにしてください
+    //@Nagashima 配列を初期化する際の要素数は定数を用いてください　管理が楽になります
     public GameObject[] top = new GameObject[5];
     public GameObject[] nei = new GameObject[5];
 
@@ -49,6 +54,7 @@ public class LeaderBoardManager : MonoBehaviour
     void Update()
     {
         // 現在のハイスコアの取得が完了したら1度だけ実行
+        //@Nagashima -1はどういう状態なのかがわからないので定数を用いるなどするといいです
         if (currentHighScore.Score != -1 && !isScoreFetched)
         {
             lBoard.FetchRank(currentHighScore.Score);
@@ -86,6 +92,10 @@ public class LeaderBoardManager : MonoBehaviour
         }
     }
 
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary> 
     private void OnGUI()
     {
         DrawMenu();
@@ -94,6 +104,10 @@ public class LeaderBoardManager : MonoBehaviour
             SceneManager.LoadScene("StopWatchGame");
     }
 
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary> 
     private void DrawMenu()
     {
         // ボタンの設置

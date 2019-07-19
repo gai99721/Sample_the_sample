@@ -3,6 +3,8 @@
  * 制作日：    *
  * *************/
 
+ //20190719 長嶋　確認
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -17,12 +19,14 @@ public class LogInManager : MonoBehaviour
     private bool isLogIn;
 
     // ボタンが押されると対応する変数がtrueになる
+    //@Nagashima bool型の変数はisなどを付け加えどういう状態かわかりやすくしてください
     private bool logInButton;
     private bool signUpMenuButton;
     private bool signUpButton;
     private bool backButton;
 
     // テキストボックスで入力される文字列を格納
+    //@Nagashima 変数名は2単語以上にしてください
     public string id;
     public string pw;
     public string mail;
@@ -42,6 +46,10 @@ public class LogInManager : MonoBehaviour
 
     }
 
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     void OnGUI()
     {
 
@@ -82,6 +90,10 @@ public class LogInManager : MonoBehaviour
 
     }
 
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     private void DrawLogInMenu()
     {
         // テキスト切り替え
@@ -102,6 +114,10 @@ public class LogInManager : MonoBehaviour
 
     }
 
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     private void DrawSignUpMenu()
     {
         // テキスト切り替え

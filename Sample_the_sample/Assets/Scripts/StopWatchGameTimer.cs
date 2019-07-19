@@ -7,6 +7,8 @@
  */
 
 
+//20190719 長嶋　確認
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,22 +17,28 @@ using UnityEngine.SceneManagement;
 
 public class StopWatchGameTimer : MonoBehaviour
 {
+    //@Nagashima 変数はstart関数で初期化するようにしてください
+
+    //@Nagashima [SerializeField] private GameObject　のようにするとprivateでもInspectorから参照できます
     public GameObject timerObject = null;
     public GameObject judgObject = null;
     public GameObject text1Object = null;
     public GameObject text2Object = null;
     public GameObject titleObject = null;
 
+    //@Nagashima 変数はできる限りprivateにしてください
+    //@Nagashima 変数名はできる限りわかりやすく２単語以上使用してください
+    //@Nagashima メンバ変数は基本的にprivateを使用してください。他クラスで使用したい場合はアクセサーを使用してください
     private float timer = 0f;//タイマー
     public float judg = 0;//判定するための変数
     private int num = 0;//目標の数字
     private float darkeinng = 0;//暗転させる時間
     private int i = 0;
-    private int numFlg = 0;
 
+    //@Nagashima Flgだとどういう状態かがわかりにくいのでisなどを使用してください
+    private int numFlg = 0;
     private bool stopFlg = false;
     private bool startFlg = false;
-
     private bool backButton;
     private bool retryButton;
     private bool gameFlg = false;
@@ -51,6 +59,11 @@ public class StopWatchGameTimer : MonoBehaviour
             StopCheck();//止めたかどうか
         }
     }
+
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     private void TextCheck()
     {
         Text text1Text = text1Object.GetComponent<Text>();
@@ -72,6 +85,11 @@ public class StopWatchGameTimer : MonoBehaviour
         }
 
     }
+
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     private void StartCheck()
     {
         if (Input.GetMouseButtonUp(0))
@@ -90,6 +108,11 @@ public class StopWatchGameTimer : MonoBehaviour
                 break;
         }
     }
+
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     private void StopCheck()
     {
         Text timerText = timerObject.GetComponent<Text>();
@@ -123,7 +146,11 @@ public class StopWatchGameTimer : MonoBehaviour
         }
     }
 
-
+    //@Nagashima 関数名は2単語以上にしてください
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     private void Judgment()
     {
         if (timer > num)
@@ -145,6 +172,11 @@ public class StopWatchGameTimer : MonoBehaviour
         //tScore.AddPoint(judg);
 
     }
+
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     private void OnGUI()
     {
 
@@ -165,6 +197,11 @@ public class StopWatchGameTimer : MonoBehaviour
         }
     }
 
+    //@Nagashima 関数名は単語の区切り1文字目を大文字にしてくださいｄ
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    /// <summary>
+    /// @brief 関数の簡単な説明
+    /// </summary>
     private void drawMenu()
     {
         // ボタンの設置
