@@ -10,14 +10,14 @@ using NCMB;
 
 namespace NCMB
 {
-    public class HightScore
+    public class HighScore
     {
 
         public  double Score { get; set; }
         public  string Name { get; private set; }
 
         // コンストラクタ
-        public HightScore(double _score, string _Name)
+        public HighScore(double _score, string _Name)
         {
             //Debug.Log("_score : " + _score);
             Score = _score;
@@ -75,7 +75,7 @@ namespace NCMB
         }
         public string Print()
         {
-            return Name + ' ' + Score.ToString("f3") + "sec";
+            return Name + ' ' + Score.ToString("f3") + " sec";
         }
     }
 }

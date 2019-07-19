@@ -75,8 +75,6 @@ public class GameManager : MonoBehaviour
         int btnW = 140, btnH = 50;
         GUI.skin.button.fontSize = 18;
         leaderBoardButton = GUI.Button(new Rect(0 * btnW, 0, btnW, btnH), "Leader Board");
-        //commentButton = GUI.Button(new Rect(1 * btnW, 0, btnW, btnH), "Comment");
-        //logOutButton = GUI.Button(new Rect(2 * btnW, 0, btnW, btnH), "Log Out");
         logOutButton = GUI.Button(new Rect(1 * btnW, 0, btnW, btnH), "Log Out");
     }
 }

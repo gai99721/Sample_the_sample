@@ -13,7 +13,7 @@ public class LeaderBoardManager : MonoBehaviour
 {
 
     private LeaderBoard lBoard;
-    private  NCMB.HightScore currentHighScore;
+    private  NCMB.HighScore currentHighScore;
     public GameObject[] top = new GameObject[5];
     public GameObject[] nei = new GameObject[5];
 
@@ -42,7 +42,7 @@ public class LeaderBoardManager : MonoBehaviour
 
         // 現在のハイスコアを取得
         string name = FindObjectOfType<UserAuth>().CurrentPlayer();
-        currentHighScore = new NCMB.HightScore(10, name);
+        currentHighScore = new NCMB.HighScore(10, name);
         currentHighScore.Fetch();
     }
 
@@ -67,21 +67,21 @@ public class LeaderBoardManager : MonoBehaviour
         if (lBoard.topRankers != null && lBoard.neighbors != null && !isLeaderBoardFetched)
         {
             // 自分が1位のときと2位のときだけ順位表示を調整
-            int offset = 2;
+            /*int offset = 2;
             if (lBoard.currentRank == 1) offset = 0;
-            if (lBoard.currentRank == 2) offset = 1;
+            if (lBoard.currentRank == 2) offset = 1;*/
 
             // 取得したトップ5ランキングを表示
             for (int i = 0; i < lBoard.topRankers.Count; ++i)
             {
-                top[i].GetComponent<GUIText>().text = i + 1 + ". " + lBoard.topRankers[i].Print();
+                top[i].GetComponent<Text>().text = i + 1 + ". " + lBoard.topRankers[i].Print();
             }
 
             // 取得したライバルランキングを表示
-            for (int i = 0; i < lBoard.neighbors.Count; ++i)
+            /*for (int i = 0; i < lBoard.neighbors.Count; ++i)
             {
-                nei[i].GetComponent<GUIText>().text = lBoard.currentRank - offset + i + ". " + lBoard.neighbors[i].Print();
-            }
+                nei[i].GetComponent<Text>().text = lBoard.currentRank - offset + i + ". " + lBoard.neighbors[i].Print();
+            }*/
             isLeaderBoardFetched = true;
         }
     }

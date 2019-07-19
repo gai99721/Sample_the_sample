@@ -105,7 +105,7 @@
     <Compile Include="Assets\NCMB\Script\Task\NCMBUserTaskMethods.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameStart.cs" />
-    <Compile Include="Assets\Scripts\HightScore.cs" />
+    <Compile Include="Assets\Scripts\HighScore.cs" />
     <Compile Include="Assets\Scripts\LeaderBoard.cs" />
     <Compile Include="Assets\Scripts\LeaderBoardManager.cs" />
     <Compile Include="Assets\Scripts\LogInManager.cs" />
