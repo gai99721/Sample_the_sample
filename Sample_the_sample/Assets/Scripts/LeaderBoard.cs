@@ -10,15 +10,21 @@ using System.Collections.Generic;
 
 public class LeaderBoard
 {
-    //@Nagashima 変数はstart関数で初期化するようにしてください
-    public int currentRank = 0;
-    public List<NCMB.HighScore> topRankers = null;
-    public List<NCMB.HighScore> neighbors = null;
-
-    // 現プレイヤーのハイスコアを受けとってランクを取得 ---------------
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    public int currentRank;
+    public List<NCMB.HighScore> topRankers;
+    public List<NCMB.HighScore> neighbors;
     /// <summary>
-    /// @brief 関数の簡単な説明
+    /// @brief 初期化処理
+    /// </summary>
+    void start()
+    {
+        currentRank = 0;
+        topRankers = null;
+        neighbors = null;
+    }
+
+    /// <summary>
+    /// @brief 現プレイヤーのハイスコアを受けとってランクを取得 ---------------
     /// </summary> 
     /// <param name="currentScore"></param>
     public void FetchRank(double currentScore)
@@ -40,10 +46,8 @@ public class LeaderBoard
         });
     }
 
-    // サーバーからトップ5を取得 --------------- 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
-    /// @brief 関数の簡単な説明
+    /// @brief サーバーからトップ5を取得 --------------- 
     /// </summary> 
     public void FetchTopRankers()
     {
@@ -73,10 +77,8 @@ public class LeaderBoard
         });
     }
 
-    // サーバーからrankの前後2件を取得 ---------------
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
-    /// @brief 関数の簡単な説明
+    /// @brief サーバーからrankの前後2件を取得 ---------------
     /// </summary>
     public void FetchNeighbors()
     {

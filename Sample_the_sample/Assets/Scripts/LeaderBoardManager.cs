@@ -13,14 +13,13 @@ using UnityEngine.UI;
 
 public class LeaderBoardManager : MonoBehaviour
 {
-    //@Nagashima lなど先頭単語を1文字だけにしないでください　lenderBoard
-    private LeaderBoard lBoard;
+    private LeaderBoard leaderBoard;
     private  NCMB.HighScore currentHighScore;
 
-    //@Nagashima 変数はできる限りprivateを使用するようにしてください
     //@Nagashima 配列を初期化する際の要素数は定数を用いてください　管理が楽になります
-    public GameObject[] top = new GameObject[5];
-    public GameObject[] nei = new GameObject[5];
+    private const int N = 5;
+    private GameObject[] top = new GameObject[N];
+    private GameObject[] nei = new GameObject[N];
 
     private bool isScoreFetched;
     private bool isRankFetched;
@@ -31,7 +30,7 @@ public class LeaderBoardManager : MonoBehaviour
 
     void Start()
     {
-        lBoard = new LeaderBoard();
+        leaderBoard = new LeaderBoard();
 
         // テキストを表示するゲームオブジェクトを取得
         for (int i = 0; i < 5; ++i)
@@ -48,29 +47,29 @@ public class LeaderBoardManager : MonoBehaviour
         // 現在のハイスコアを取得
         string name = FindObjectOfType<UserAuth>().CurrentPlayer();
         currentHighScore = new NCMB.HighScore(10, name);
-        currentHighScore.Fetch();
+        currentHighScore.SarverFetch();
     }
 
     void Update()
     {
         // 現在のハイスコアの取得が完了したら1度だけ実行
         //@Nagashima -1はどういう状態なのかがわからないので定数を用いるなどするといいです
-        if (currentHighScore.Score != -1 && !isScoreFetched)
+        if (currentHighScore.GameScore != -1 && !isScoreFetched)
         {
-            lBoard.FetchRank(currentHighScore.Score);
+            leaderBoard.FetchRank(currentHighScore.GameScore);
             isScoreFetched = true;
         }
 
         // 現在の順位の取得が完了したら1度だけ実行
-        if (lBoard.currentRank != 0 && !isRankFetched)
+        if (leaderBoard.currentRank != 0 && !isRankFetched)
         {
-            lBoard.FetchTopRankers();
-            lBoard.FetchNeighbors();
+            leaderBoard.FetchTopRankers();
+            leaderBoard.FetchNeighbors();
             isRankFetched = true;
         }
 
         // ランキングの取得が完了したら1度だけ実行
-        if (lBoard.topRankers != null && lBoard.neighbors != null && !isLeaderBoardFetched)
+        if (leaderBoard.topRankers != null && leaderBoard.neighbors != null && !isLeaderBoardFetched)
         {
             // 自分が1位のときと2位のときだけ順位表示を調整
             /*int offset = 2;
@@ -78,9 +77,9 @@ public class LeaderBoardManager : MonoBehaviour
             if (lBoard.currentRank == 2) offset = 1;*/
 
             // 取得したトップ5ランキングを表示
-            for (int i = 0; i < lBoard.topRankers.Count; ++i)
+            for (int i = 0; i < leaderBoard.topRankers.Count; ++i)
             {
-                top[i].GetComponent<Text>().text = i + 1 + ". " + lBoard.topRankers[i].Print();
+                top[i].GetComponent<Text>().text = i + 1 + ". " + leaderBoard.topRankers[i].ScreenPrint();
             }
 
             // 取得したライバルランキングを表示
@@ -92,9 +91,8 @@ public class LeaderBoardManager : MonoBehaviour
         }
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
-    /// @brief 関数の簡単な説明
+    /// @brief ボタンが押されたとき
     /// </summary> 
     private void OnGUI()
     {
@@ -104,9 +102,8 @@ public class LeaderBoardManager : MonoBehaviour
             SceneManager.LoadScene("StopWatchGame");
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
-    /// @brief 関数の簡単な説明
+    /// @brief メニューの描画
     /// </summary> 
     private void DrawMenu()
     {

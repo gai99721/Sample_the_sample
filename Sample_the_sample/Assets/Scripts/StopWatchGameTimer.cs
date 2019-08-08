@@ -168,7 +168,7 @@ public class StopWatchGameTimer : MonoBehaviour
             judg = timer;
         }
 
-        FindObjectOfType<Score>().AddPoint(judg);
+        FindObjectOfType<ScoreManager>().AddScore(judg);
         //tScore.AddPoint(judg);
 
     }

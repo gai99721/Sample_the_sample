@@ -109,7 +109,7 @@
     <Compile Include="Assets\Scripts\LeaderBoard.cs" />
     <Compile Include="Assets\Scripts\LeaderBoardManager.cs" />
     <Compile Include="Assets\Scripts\LogInManager.cs" />
-    <Compile Include="Assets\Scripts\Score.cs" />
+    <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\StopWatchGameTimer.cs" />
     <Compile Include="Assets\Scripts\UserAuth.cs" />
     <Reference Include="UnityEditor.StandardEvents">

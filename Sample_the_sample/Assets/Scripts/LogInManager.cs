@@ -19,17 +19,15 @@ public class LogInManager : MonoBehaviour
     private bool isLogIn;
 
     // ボタンが押されると対応する変数がtrueになる
-    //@Nagashima bool型の変数はisなどを付け加えどういう状態かわかりやすくしてください
-    private bool logInButton;
-    private bool signUpMenuButton;
-    private bool signUpButton;
-    private bool backButton;
+    private bool isLogInButton;
+    private bool isSignUpMenuButton;
+    private bool isSignUpButton;
+    private bool isBackButton;
 
     // テキストボックスで入力される文字列を格納
-    //@Nagashima 変数名は2単語以上にしてください
-    public string id;
-    public string pw;
-    public string mail;
+    public string userId;
+    public string userPw;
+    public string mailAddress;
 
     void Start()
     {
@@ -45,10 +43,9 @@ public class LogInManager : MonoBehaviour
         guiTextLogIn.SetActive(true);
 
     }
-
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+    
     /// <summary>
-    /// @brief 関数の簡単な説明
+    /// @brief GUI類の表示関数
     /// </summary>
     void OnGUI()
     {
@@ -60,11 +57,11 @@ public class LogInManager : MonoBehaviour
             DrawLogInMenu();
 
             // ログインボタンが押されたら
-            if (logInButton)
-                FindObjectOfType<UserAuth>().LogIn(id, pw);
+            if (isLogInButton)
+                FindObjectOfType<UserAuth>().LogIn(userId, userPw);
 
             // 新規登録画面に移動するボタンが押されたら
-            if (signUpMenuButton)
+            if (isSignUpMenuButton)
                 isLogIn = false;
         }
 
@@ -75,11 +72,11 @@ public class LogInManager : MonoBehaviour
             DrawSignUpMenu();
 
             // 新規登録ボタンが押されたら
-            if (signUpButton)
-                FindObjectOfType<UserAuth>().signUp(id, mail, pw);
+            if (isSignUpButton)
+                FindObjectOfType<UserAuth>().SignUp(userId, mailAddress, userPw);
 
             // 戻るボタンが押されたら
-            if (backButton)
+            if (isBackButton)
                 isLogIn = true;
         }
 
@@ -90,9 +87,8 @@ public class LogInManager : MonoBehaviour
 
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
-    /// @brief 関数の簡単な説明
+    /// @brief ログインメニューの表示
     /// </summary>
     private void DrawLogInMenu()
     {
@@ -103,20 +99,19 @@ public class LogInManager : MonoBehaviour
         // テキストボックスの設置と入力値の取得
         GUI.skin.textField.fontSize = 20;
         int txtW = 150, txtH = 40;
-        id = GUI.TextField(new Rect(Screen.width * 1 / 2, Screen.height * 1 / 3 - txtH * 1 / 2, txtW, txtH), id);
-        pw = GUI.PasswordField(new Rect(Screen.width * 1 / 2, Screen.height * 1 / 2 - txtH * 1 / 2, txtW, txtH), pw, '*');
+        userId = GUI.TextField(new Rect(Screen.width * 1 / 2, Screen.height * 1 / 3 - txtH * 1 / 2, txtW, txtH), userId);
+        userPw = GUI.PasswordField(new Rect(Screen.width * 1 / 2, Screen.height * 1 / 2 - txtH * 1 / 2, txtW, txtH), userPw, '*');
 
         // ボタンの設置
         int btnW = 180, btnH = 50;
         GUI.skin.button.fontSize = 20;
-        logInButton = GUI.Button(new Rect(Screen.width * 1 / 4 - btnW * 1 / 2, Screen.height * 3 / 4 - btnH * 1 / 2, btnW, btnH), "Log In");
-        signUpMenuButton = GUI.Button(new Rect(Screen.width * 3 / 4 - btnW * 1 / 2, Screen.height * 3 / 4 - btnH * 1 / 2, btnW, btnH), "Sign Up");
+        isLogInButton = GUI.Button(new Rect(Screen.width * 1 / 4 - btnW * 1 / 2, Screen.height * 3 / 4 - btnH * 1 / 2, btnW, btnH), "Log In");
+        isSignUpMenuButton = GUI.Button(new Rect(Screen.width * 3 / 4 - btnW * 1 / 2, Screen.height * 3 / 4 - btnH * 1 / 2, btnW, btnH), "Sign Up");
 
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
-    /// @brief 関数の簡単な説明
+    /// @brief 会員登録画面の表示
     /// </summary>
     private void DrawSignUpMenu()
     {
@@ -127,15 +122,15 @@ public class LogInManager : MonoBehaviour
         // テキストボックスの設置と入力値の取得
         int txtW = 150, txtH = 35;
         GUI.skin.textField.fontSize = 20;
-        id = GUI.TextField(new Rect(Screen.width * 1 / 2, Screen.height * 1 / 4 - txtH * 1 / 2, txtW, txtH), id);
-        pw = GUI.PasswordField(new Rect(Screen.width * 1 / 2, Screen.height * 2 / 5 - txtH * 1 / 2, txtW, txtH), pw, '*');
-        mail = GUI.TextField(new Rect(Screen.width * 1 / 2, Screen.height * 11 / 20 - txtH * 1 / 2, txtW, txtH), mail);
+        userId = GUI.TextField(new Rect(Screen.width * 1 / 2, Screen.height * 1 / 4 - txtH * 1 / 2, txtW, txtH), userId);
+        userPw = GUI.PasswordField(new Rect(Screen.width * 1 / 2, Screen.height * 2 / 5 - txtH * 1 / 2, txtW, txtH), userPw, '*');
+        mailAddress = GUI.TextField(new Rect(Screen.width * 1 / 2, Screen.height * 11 / 20 - txtH * 1 / 2, txtW, txtH), mailAddress);
 
         // ボタンの設置
         int btnW = 180, btnH = 50;
         GUI.skin.button.fontSize = 20;
-        signUpButton = GUI.Button(new Rect(Screen.width * 1 / 4 - btnW * 1 / 2, Screen.height * 3 / 4 - btnH * 1 / 2, btnW, btnH), "Sign Up");
-        backButton = GUI.Button(new Rect(Screen.width * 3 / 4 - btnW * 1 / 2, Screen.height * 3 / 4 - btnH * 1 / 2, btnW, btnH), "Back");
+        isSignUpButton = GUI.Button(new Rect(Screen.width * 1 / 4 - btnW * 1 / 2, Screen.height * 3 / 4 - btnH * 1 / 2, btnW, btnH), "Sign Up");
+        isBackButton = GUI.Button(new Rect(Screen.width * 3 / 4 - btnW * 1 / 2, Screen.height * 3 / 4 - btnH * 1 / 2, btnW, btnH), "Back");
     }
 
 }

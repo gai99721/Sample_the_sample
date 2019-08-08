@@ -14,39 +14,33 @@ namespace NCMB
 {
     public class HighScore
     {
-        //@Nagashima アクセサー名は2単語以上にしてください
-        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
         /// <summary>
-        /// @brief 簡単な説明
+        /// @brief ゲーム内スコア
         /// </summary>
-        public double Score { get; set; }
-        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
+        public double GameScore { get; set; }
         /// <summary>
-        /// @brief 簡単な説明
+        /// @brief Playerの名前情報
         /// </summary>
-        public string Name { get; private set; }
+        public string PlayerName { get; private set; }
 
         // コンストラクタ
         public HighScore(double _score, string _Name)
         {
             //Debug.Log("_score : " + _score);
-            Score = _score;
+            GameScore = _score;
             //Debug.Log("score : " + Score);
-            Name = _Name;
+            PlayerName = _Name;
         }
 
-        // サーバーにハイスコアを保存
-        //@Nagashima 関数名は2単語以上にしてください
-        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
         /// <summary>
-        /// @brief 関数の簡単な説明
+        /// @brief サーバーにハイスコアを保存
         /// </summary>
         /// <param name="score">変数の説明</param>
-        public void Save(double score)
+        public void ServerSave(double score)
         {
             // データストアの「HighScore」クラスから、Nameをキーにして検索
             NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
-            query.WhereEqualTo("Name", Name);
+            query.WhereEqualTo("Name", PlayerName);
             query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
             {
                 //Debug.Log("tHighScore.score : " + score);
@@ -60,17 +54,14 @@ namespace NCMB
             });
         }
 
-        // サーバーからハイスコアを取得
-        //@Nagashima 関数名は2単語以上にしてください
-        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
         /// <summary>
-        /// @brief 関数の簡単な説明
+        /// @brief サーバーからハイスコアを取得
         /// </summary>
-        public void Fetch()
+        public void SarverFetch()
         {
             // データストアの「HighScore」クラスから、Nameをキーにして検索
             NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("HighScore");
-            query.WhereEqualTo("Name", Name);
+            query.WhereEqualTo("Name", PlayerName);
             query.FindAsync((List<NCMBObject> objList, NCMBException e) =>
             {
 
@@ -81,28 +72,27 @@ namespace NCMB
                     if (objList.Count == 0)
                     {
                         NCMBObject obj = new NCMBObject("HighScore");
-                        obj["Name"] = Name;
+                        obj["Name"] = PlayerName;
                         obj["Score"] = 10;
                         obj.SaveAsync();
-                        Score = 10;
+                        GameScore = 10;
                     }
                     // ハイスコアが登録済みだったら
                     else
                     {
-                        Score = System.Convert.ToDouble(objList[0]["Score"]);
+                        GameScore = System.Convert.ToDouble(objList[0]["Score"]);
                     }
                 }
             });
         }
 
-        //@Nagashima 関数名は2単語以上にしてください
-        ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
         /// <summary>
-        /// @brief 関数の簡単な説明
+        /// @brief 画面への表示内容の設定
         /// </summary>
-        public string Print()
+        public string ScreenPrint()
         {
-            return Name + ' ' + Score.ToString("f3") + " sec";
+            //return PlayerName + ' ' + ScoreManager.ToString("f3") + " sec";
+            return PlayerName + ' ' + GameScore.ToString("f3") + " sec";
         }
     }
 }
