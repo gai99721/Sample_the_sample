@@ -13,24 +13,14 @@ using System.Collections.Generic;
 public class UserAuth : MonoBehaviour
 {
 
-    private string currentPlayerName
-    {
-        get
-        {
-            return currentPlayerName;
-        }
-        set
-        {
-            currentPlayerName = value;
-        }
-    }
+    private string currentPlayerName;
 
-
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief mobile backendに接続してログイン ------------------------
     /// </summary>
-    /// <param name="id">PlayerID</param>
-    /// <param name="pw">パスワード</param>
+    /// <param name="id">プレイヤーのID</param>
+    /// <param name="pw">プレイヤーが設定したパスワード</param>
     public void LogIn(string id, string pw)
     {
 
@@ -43,12 +33,14 @@ public class UserAuth : MonoBehaviour
         });
     }
 
+    //@Nagashima 関数名は単語の区切り1文字目を大文字にしてください
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief mobile backendに接続して新規会員登録 ------------------------
     /// </summary>
-    /// <param name="id">PlayerID</param>
-    /// <param name="mail">MailAddress</param>
-    /// <param name="pw">パスワード</param>
+    /// <param name="id">プレイヤーのID</param>
+    /// <param name="pw">プレイヤーが設定したパスワード</param>
+    /// <param name="mail">プレイヤーが入力したメールアドレス</param>
     public void SignUp(string id, string mail, string pw)
     {
 
@@ -65,8 +57,9 @@ public class UserAuth : MonoBehaviour
         });
     }
 
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
-    /// @brief mobile backendに接続してログアウト ------------------------
+    /// @brief  mobile backendに接続してログアウト ------------------------
     /// </summary>
     public void LogOut()
     {
@@ -80,24 +73,25 @@ public class UserAuth : MonoBehaviour
     }
 
     //@Nagashima 変数を取得したいときはアクセサーを使用してください
+    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief 現在のプレイヤー名を返す --------------------
     /// </summary>
     public string CurrentPlayer()
-    { 
+    {
         return currentPlayerName;
     }
-        
-    
 
-    // シングルトン化する ------------------------
+    /// <summary>
+    /// @brief シングルトン化する ------------------------
+    /// </summary>
     //@Nagashima 変数名は2単語以上にしてください
-    private UserAuth userInstance = null;
+    private UserAuth userAuthInstance = null;
     void Awake()
     {
-        if (userInstance == null)
+        if (userAuthInstance == null)
         {
-            userInstance = this;
+            userAuthInstance = this;
             DontDestroyOnLoad(gameObject);
 
             string name = gameObject.name;
