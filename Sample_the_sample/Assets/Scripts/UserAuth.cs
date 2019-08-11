@@ -15,7 +15,6 @@ public class UserAuth : MonoBehaviour
 
     private string currentPlayerName;
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief mobile backendに接続してログイン ------------------------
     /// </summary>
@@ -33,8 +32,6 @@ public class UserAuth : MonoBehaviour
         });
     }
 
-    //@Nagashima 関数名は単語の区切り1文字目を大文字にしてください
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief mobile backendに接続して新規会員登録 ------------------------
     /// </summary>
@@ -57,7 +54,6 @@ public class UserAuth : MonoBehaviour
         });
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief  mobile backendに接続してログアウト ------------------------
     /// </summary>
@@ -72,8 +68,6 @@ public class UserAuth : MonoBehaviour
         });
     }
 
-    //@Nagashima 変数を取得したいときはアクセサーを使用してください
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief 現在のプレイヤー名を返す --------------------
     /// </summary>

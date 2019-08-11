@@ -17,25 +17,19 @@ using UnityEngine.SceneManagement;
 
 public class StopWatchGameTimer : MonoBehaviour
 {
-    //@Nagashima 変数はstart関数で初期化するようにしてください
 
-    //@Nagashima [SerializeField] private GameObject　のようにするとprivateでもInspectorから参照できます
-    public GameObject timerObject = null;
-    public GameObject judgObject  = null;
-    public GameObject text1Object = null;
-    public GameObject text2Object = null;
-    public GameObject titleObject = null;
+    [SerializeField] private GameObject timerObject = null;
+    [SerializeField] private GameObject judgObject = null;
+    [SerializeField] private GameObject text1Object = null;
+    [SerializeField] private GameObject text2Object = null;
+    [SerializeField] private GameObject titleObject = null;
 
-    //@Nagashima 変数はできる限りprivateにしてください
-    //@Nagashima 変数名はできる限りわかりやすく２単語以上使用してください
-    //@Nagashima メンバ変数は基本的にprivateを使用してください。他クラスで使用したい場合はアクセサーを使用してください
     private float mainGameTimer;//タイマー
     private float mainGameJudg;//判定するための変数
     private int   targetNumber;//目標の数字
     private float darkeningTime;//暗転させる時間
     private int   clickCount;
 
-    //@Nagashima Flgだとどういう状態かがわかりにくいのでisなどを使用してください
     private int  isStartFlg;
     private bool isStopFlg;
     private bool isStartTimerFlg;
@@ -45,7 +39,7 @@ public class StopWatchGameTimer : MonoBehaviour
 
     void Start()
     {
-       /* timerObject = null;
+        /*timerObject = null;
         judgObject = null;
         text1Object = null;
         text2Object = null;
@@ -81,7 +75,6 @@ void Update()
         }
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief 基本的なゲームの説明を行う
     /// </summary>
@@ -107,7 +100,6 @@ void Update()
 
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief ゲームが始まってから何回クリックしたかカウントする
     /// </summary>
@@ -130,7 +122,6 @@ void Update()
         }
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief mainGameTimerがdarkeningTimeを越えた時に暗転させる
     /// 　　　 isStopFlgがtrueになったらタイマーを止め判定を行う
@@ -168,8 +159,6 @@ void Update()
         }
     }
 
-    //@Nagashima 関数名は2単語以上にしてください
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief 目標の数字から止めた数字がどれだけ離れているかを調べる
     /// </summary>
@@ -198,7 +187,6 @@ void Update()
 
     }
 
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief ゲーム終了後にクリックしたボタンによって違うシーンへ移動する
     /// </summary>
@@ -222,8 +210,6 @@ void Update()
         }
     }
 
-    //@Nagashima 関数名は単語の区切り1文字目を大文字にしてくださいｄ
-    ////@Nagashima 関数にコメントを振る場合この形式にしてください(/を3つ入力すると勝手に挿入されます)
     /// <summary>
     /// @brief シーン移動時に使うボタンの生成
     /// </summary>
